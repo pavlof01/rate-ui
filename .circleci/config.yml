@@ -1,0 +1,16 @@
+orbs:
+  chromatic: wave/chromatic@x.y.z
+version: 2.1
+workflows:
+  main-workflow:
+    jobs:
+      - chromatic/test:
+          CHROMATIC_APP_CODE: p9xljx0eni
+          filters:
+            branches:
+              ignore: master
+      - chromatic/run-and-accept-all:
+          CHROMATIC_APP_CODE: p9xljx0eni
+          filters:
+            branches:
+              only: master
