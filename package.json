@@ -20,7 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "chromatic": "CHROMATIC_APP_CODE=p9xljx0eni chromatic"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +52,7 @@
     "@types/storybook__addon-info": "^5.2.1",
     "awesome-typescript-loader": "^5.2.1",
     "react-docgen-typescript-loader": "^3.7.2",
-    "react-docgen-typescript-webpack-plugin": "^1.1.0"
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "storybook-chromatic": "^3.5.2"
   }
 }
