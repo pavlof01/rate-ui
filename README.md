@@ -39,9 +39,9 @@ Diff Detector отображает пользовательский интерф
 
 Затем вы просматриваете изменения с помощью Merge Manager , веб-интерфейса, который помогает выявлять ошибки и обновлять базовые показатели. Тесты проходят, когда нет изменений или все изменения приняты.
 
-[![Demo Chromatic](https://docs.chromaticqa.com/img/chromatic-architecture.jpg)]
-[![Demo Chromatic](https://docs.chromaticqa.com/img/build-unreviewed.png)]
-[![Demo Chromatic](https://docs.chromaticqa.com/img/snapshot-review.png)]
+![Demo Chromatic](https://docs.chromaticqa.com/img/chromatic-architecture.jpg)
+![Demo Chromatic](https://docs.chromaticqa.com/img/build-unreviewed.png)
+![Demo Chromatic](https://docs.chromaticqa.com/img/snapshot-review.png)
 
 ##### Плюсы использования:
 - Предоставляет полный (новый) workflow для разработки и тестирования
