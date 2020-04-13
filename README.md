@@ -1,4 +1,5 @@
 ## RATE-UI
+[Перейти в Storybook](https://5e9457088c429b0022bdb7ad-fzrbthyheu.chromatic.com/?path=/story/button--button-primary-contained)
 
 Данный проект представляет собой электронную книгу всех компонентов<br />
 которые используются в проекте RATE
