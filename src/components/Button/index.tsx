@@ -11,7 +11,7 @@ const ButtonComponentTheme = createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-        borderRadius: 12,
+        borderRadius: 22,
         minWidth: 120,
         minHeight: 40,
         textTransform: 'none',
