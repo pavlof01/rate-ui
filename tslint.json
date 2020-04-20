@@ -13,7 +13,7 @@
     "ordered-imports": false,
     "no-unused-expression": [true, "allow-fast-null-checks"],
     "jsx-no-lambda": false,
-    "interface-name": true,
+    "interface-name": false,
     "member-ordering": [false],
     "trailing-comma": [
       true,

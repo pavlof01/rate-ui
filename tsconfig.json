@@ -9,20 +9,23 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react",
+    "module": "esnext",
+    "isolatedModules": true
   },
   "include": [
     "src"
   ],
   "paths": {
-    "components/*": ["./src/components/*"],
+    "components/*": [
+      "./src/components/*"
+    ]
   }
 }

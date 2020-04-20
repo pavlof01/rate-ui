@@ -1,9 +1,11 @@
-import {
-  configure
-} from '@storybook/react';
-const req = require.context('../src/stories', true, /.stories.tsx$/);
+import React from 'react'
+import { configure } from '@storybook/react'
+import { ThemeProvider } from 'styled-components'
+import { addDecorator } from '@storybook/react'
 
-function loadStories() {
-  req.keys().forEach(req);
-}
-configure(loadStories, module);
+import Theme from '../src/styles/theme'
+
+import '../src/styles/global.css'
+
+addDecorator(story => <ThemeProvider theme={Theme}>{story()}</ThemeProvider>)
+configure(require.context('../src/stories', true, /.tsx$/), module)

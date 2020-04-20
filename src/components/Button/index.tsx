@@ -1,41 +1,61 @@
-import React from 'react'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import { Button, ButtonProps } from '@material-ui/core'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { spacing, palette, color, sizing, shadows, borders, typography, compose, style } from '@material-ui/system'
+import {
+  SpacingProps,
+  TypographyProps,
+  BordersProps,
+  SizingProps,
+  PaletteProps,
+  ShadowsProps,
+} from '@material-ui/system'
 
-const ButtonComponentTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#7953E4',
-    },
-  },
-  overrides: {
-    MuiButton: {
-      root: {
-        borderRadius: 22,
-        minWidth: 120,
-        minHeight: 40,
-        textTransform: 'none',
-      },
-      outlinedPrimary: {
-        border: '3px solid #7953E4',
-        '&:hover': {
-          border: '3px solid #7953E4',
-        },
-      },
-      outlined: {
-        border: '3px solid #7953E4',
-      },
-      text: {},
-    },
-  },
+import { buttons, size } from './variants'
+
+const variant = style({
+  prop: 'variant',
+  cssProperty: false,
+  themeKey: 'buttons',
 })
 
-const ButtonComponent: React.FC<ButtonProps> = (props) => {
-  return (
-    <ThemeProvider theme={ButtonComponentTheme}>
-      <Button {...props}>{props.children}</Button>
-    </ThemeProvider>
-  )
+const sizeVariants = style({
+  prop: 'size',
+  cssProperty: false,
+  themeKey: 'buttonSizes',
+})
+
+export interface IButtonProps
+  extends TypographyProps,
+    SpacingProps,
+    BordersProps,
+    SizingProps,
+    PaletteProps,
+    ShadowsProps {
+  variant?: keyof typeof buttons
+  /**
+   * В данный момент не работает, (нужно для респонсива)
+   *
+   **/
+  size?: keyof typeof size | Array<keyof typeof size>
 }
+
+const Button = styled.button<IButtonProps>`
+  ${compose(typography, color, spacing, borders, sizing, palette, shadows, variant, sizeVariants)}
+`
+
+Button.defaultProps = {
+  variant: 'primary',
+  size: 'default',
+  fontSize: 14,
+  border: 2,
+  borderRadius: 16,
+  px: 40,
+  py: 8,
+}
+
+/**
+ * Можно добавить описание
+ */
+export const ButtonComponent: FC<IButtonProps> = props => <Button {...props}>{props.children}</Button>
 
 export default ButtonComponent
