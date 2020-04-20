@@ -10,7 +10,7 @@ export default {
   title: 'Button',
   decorators: [withInfo],
   parameters: {
-    info: { inline: true, styles: {} },
+    info: { styles: {} },
   },
 }
 
