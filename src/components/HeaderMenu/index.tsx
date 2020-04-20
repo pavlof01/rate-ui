@@ -83,23 +83,6 @@ const HeaderMenu: FC<Props> = () => {
                 text: 'Цифровые сервисы',
                 onClick: () => console.log('Цифровые сервисы'),
               },
-              { text: 'Архив', onClick: () => console.log('Архив') },
-            ]}
-          />
-          <Dropdown
-            title="Отчеты"
-            menuItems={[
-              {
-                text: 'Сводка',
-                onClick: () => console.log('Сводка'),
-              },
-              {
-                text: 'Типы сервисов',
-                onClick: () => console.log('Цифровые сервисы'),
-              },
-              { text: 'Сервисы', onClick: () => console.log('Архив') },
-              { text: 'Сотрудники', onClick: () => console.log('Архив') },
-              { text: 'Руководители', onClick: () => console.log('Архив') },
             ]}
           />
         </Flex>

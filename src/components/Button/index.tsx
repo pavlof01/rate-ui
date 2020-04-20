@@ -48,7 +48,7 @@ Button.defaultProps = {
   variant: 'primary',
   size: 'default',
   fontSize: 14,
-  borderRadius: 16,
+  borderRadius: 10,
   px: 40,
   py: 8,
 }

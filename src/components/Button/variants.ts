@@ -29,7 +29,7 @@ export const buttons = {
     color: palette.black,
     backgroundColor: palette.transparent,
     borderRadius: 0,
-    borderWidth: 2,
+    borderWidth: 1,
     [HOVER]: {
       borderBottomColor: palette.main,
     },
