@@ -10,7 +10,7 @@ export default {
   title: 'Button',
   decorators: [withInfo],
   parameters: {
-    info: { styles: {} },
+    info: { inline: true },
   },
 }
 
@@ -20,13 +20,13 @@ export const ButtonOutline = () => <Button variant="outline">Добавить р
 
 export const ButtonText = () => <Button variant="text">Добавить руководителя</Button>
 
-export const IconButton = () => (
+export const Icon = () => (
   <Button variant="icon" px={2} py={2}>
     <Img src={require('../../assets/icons/notification.svg')} />
   </Button>
 )
 
-export const ButtonWithCcon = () => (
+export const TextWithIcon = () => (
   <ButtonWithIcon variant="text" px={8} endIcon={require('../../assets/icons/exit.svg')}>
     Выйти
   </ButtonWithIcon>

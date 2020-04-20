@@ -1,36 +1,37 @@
 import React from 'react'
 
-import Menu from './components/Dropdown'
-import Button from './components/Button'
-import { Img } from 'styles'
+import HeaderMenu from './components/HeaderMenu'
+import SubdivisionInfo from './components/SubdivisionInfo'
+import { Box } from 'styles'
 
 const App = () => {
   return (
-    <div style={{ paddingTop: 200, paddingLeft: 200 }}>
-      <Button variant="primary">primary</Button>
-      <Button variant="outline">outline</Button>
-      <Button variant="text">text</Button>
-      <Button variant="icon">
-        <Img src={require('./assets/icons/notification.svg')} />
-      </Button>
-      <Menu
-        title="Главная"
-        triggerType="click"
-        menuItems={[
-          {
-            text: 'Подразделения',
-            onClick: () => console.log('Подразделения'),
-            icon: require('./assets/icons/raiting.svg'),
-          },
-          {
-            text: 'Цифровые сервисы',
-            onClick: () => console.log('Цифровые сервисы'),
-            icon: require('./assets/icons/raiting.svg'),
-          },
-          { text: 'Архив', onClick: () => console.log('Архив'), icon: require('./assets/icons/raiting.svg') },
-        ]}
-      />
-    </div>
+    <Box>
+      <HeaderMenu />
+      <Box my={50} />
+      <Box borderRadius={16} boxShadow={10} m={24}>
+        <SubdivisionInfo
+          title="Управление информационных систем"
+          owner={{ name: 'Иванова Виктория', photo: 'URL' }}
+          numOfServices={7}
+        />
+        <SubdivisionInfo
+          title="Управление информационных систем"
+          owner={{ name: 'Иванова Виктория', photo: 'URL' }}
+          numOfServices={7}
+        />
+        <SubdivisionInfo
+          title="Управление информационных систем"
+          owner={{ name: 'Иванова Виктория', photo: 'URL' }}
+          numOfServices={7}
+        />
+        <SubdivisionInfo
+          title="Управление информационных систем"
+          owner={{ name: 'Иванова Виктория', photo: 'URL' }}
+          numOfServices={7}
+        />
+      </Box>
+    </Box>
   )
 }
 

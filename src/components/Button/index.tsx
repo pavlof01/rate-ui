@@ -40,6 +40,7 @@ export interface IButtonProps
 }
 
 const Button = styled.button<IButtonProps>`
+  white-space: nowrap;
   ${compose(typography, color, spacing, borders, sizing, palette, shadows, variant, sizeVariants)}
 `
 
@@ -47,7 +48,6 @@ Button.defaultProps = {
   variant: 'primary',
   size: 'default',
   fontSize: 14,
-  border: 2,
   borderRadius: 16,
   px: 40,
   py: 8,

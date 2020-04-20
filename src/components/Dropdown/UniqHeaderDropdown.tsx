@@ -1,14 +1,24 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import HoverMenu from 'material-ui-popup-state/HoverMenu'
-import Menu from '@material-ui/core/Menu'
-import { usePopupState, bindHover, bindMenu, bindTrigger } from 'material-ui-popup-state/hooks'
+import { usePopupState, bindHover, bindMenu } from 'material-ui-popup-state/hooks'
 
 import { Link, Text, FlexColumn, Img } from 'styles'
 import { FIRST, LAST, HOVER } from 'helpers/constant'
 import colors from 'styles/palette'
 
-import Button from '../Button'
+import ButtonWithIcon from '../ButtonWithIcon'
+
+const StyledButtonWithIcon = styled(ButtonWithIcon)({
+  borderRadius: 16,
+  [HOVER]: {
+    backgroundColor: colors.mainLight,
+    borderColor: colors.transparent,
+    '& .endIcon': {
+      transform: 'rotateX(0.5turn)',
+    },
+  },
+})
 
 const StyledLink = styled(Link)({
   [FIRST]: { paddingTop: 20 },
@@ -21,18 +31,26 @@ type Props = {
   menuItems: { text: string; onClick: (...args: any) => any; icon?: string }[]
 }
 
-export const DropDownMenu: FC<Props> = ({ title, menuItems }) => {
+export const UniqHeaderDropdown: FC<Props> = ({ title, menuItems }) => {
   const DropDownMenuState = usePopupState({ variant: 'popper', popupId: 'demoMenu' })
   return (
     <>
-      <Button px={0} variant="underline" {...bindHover(DropDownMenuState)}>
+      <StyledButtonWithIcon
+        px={23}
+        variant="underline"
+        startIcon={require('../../assets/icons/raiting.svg')}
+        endIcon={require('../../assets/icons/arrow.svg')}
+        borderColor={colors.gray}
+        border="2px solid"
+        {...bindHover(DropDownMenuState)}
+      >
         {title}
-      </Button>
+      </StyledButtonWithIcon>
       <HoverMenu
         {...bindMenu({ ...DropDownMenuState })}
         getContentAnchorEl={null}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <FlexColumn>
           {menuItems.map(item => (
@@ -47,4 +65,4 @@ export const DropDownMenu: FC<Props> = ({ title, menuItems }) => {
   )
 }
 
-export default DropDownMenu
+export default UniqHeaderDropdown

@@ -8,7 +8,7 @@ import {
   positions,
   display,
   shadows,
-  border,
+  borders,
   typography,
   compose,
 } from '@material-ui/system'
@@ -35,9 +35,9 @@ Text.defaultProps = {
   fontFamily: 'Regular',
 }
 
-export const Link = styled.a<PaletteProps & SpacingProps & TypographyProps & FlexboxProps & DisplayProps>(
-  compose(color, palette, spacing, typography, flexbox, display)
-)
+export const Link = styled.a<
+  PaletteProps & SpacingProps & TypographyProps & FlexboxProps & DisplayProps & BordersProps
+>(compose(color, palette, spacing, typography, flexbox, display, borders))
 
 Link.defaultProps = {
   display: 'flex',
@@ -47,7 +47,7 @@ Link.defaultProps = {
 }
 
 export const TextInput = styled.input<PaletteProps & SpacingProps & TypographyProps & FlexboxProps & BordersProps>(
-  compose(color, palette, spacing, typography, flexbox, border)
+  compose(color, palette, spacing, typography, flexbox, borders)
 )
 
 TextInput.defaultProps = {
@@ -79,11 +79,15 @@ export const Box = styled.div<
     DisplayProps &
     SizingProps &
     ShadowsProps
->(compose(palette, spacing, typography, flexbox, color, border, positions, display, sizing, shadows))
+>(compose(palette, spacing, typography, flexbox, color, borders, positions, display, sizing, shadows))
 
 Box.defaultProps = {}
 
-export const Flex = styled(Box)({ display: 'flex' })
+export const Flex = styled(Box)({})
+
+Flex.defaultProps = {
+  display: 'flex',
+}
 
 export const FlexFill = styled(Flex)({ width: '100%' })
 
@@ -91,4 +95,6 @@ export const FlexFullFill = styled(FlexFill)({ height: '100%' })
 
 export const FlexColumn = styled(Flex)({ flexDirection: 'column' })
 
-export const Img = styled('img')<SpacingProps & FlexboxProps & SizingProps>(compose(spacing, flexbox, sizing))
+export const Img = styled.img<SpacingProps & FlexboxProps & SizingProps & BordersProps>(
+  compose(spacing, flexbox, sizing, borders)
+)
