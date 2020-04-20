@@ -1,9 +1,11 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 
 import Chart from '../../components/Chart'
 
-storiesOf('Charts', module)
-  .add('Chart', () => <Chart />)
-  .addDecorator(withInfo)
+export default {
+  title: 'Charts',
+  decorators: [withInfo],
+}
+
+export const SimeChart = () => <Chart />

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import ChartJS from 'chart.js'
 
-const Chart = () => {
+const Chart: FC = () => {
   const chartRef = React.createRef<any>()
 
   const randomNumber = () => Number((Math.random() * 100).toFixed(0))
