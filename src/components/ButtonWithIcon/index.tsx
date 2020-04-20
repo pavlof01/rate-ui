@@ -16,14 +16,15 @@ interface IButtonWithIconProps extends IButtonProps {
   endIcon?: string
 }
 
+// TODO need to add more setting in this button (ex. padding of icons)
 const ButtonWithIcon: FC<IButtonWithIconProps> = props => {
   const { startIcon, endIcon } = props
   return (
     <Button {...props}>
       <Flex alignItems="center">
-        {startIcon && <Img pr={5} src={startIcon} />}
+        {startIcon && <Img className="startIcon" pr={5} src={startIcon} />}
         {props.children}
-        {endIcon && <Img pl={5} src={endIcon} />}
+        {endIcon && <Img className="endIcon" pl={5} src={endIcon} />}
       </Flex>
     </Button>
   )
