@@ -83,7 +83,11 @@ export const Box = styled.div<
 
 Box.defaultProps = {}
 
-export const Flex = styled(Box)({ display: 'flex' })
+export const Flex = styled(Box)({})
+
+Flex.defaultProps = {
+  display: 'flex',
+}
 
 export const FlexFill = styled(Flex)({ width: '100%' })
 
