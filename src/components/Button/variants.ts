@@ -13,36 +13,36 @@ export const buttons = {
   outline: {
     color: palette.main,
     borderColor: palette.main,
+    border: '2px solid',
     [HOVER]: {
       backgroundColor: palette.mainLight,
     },
   },
   text: {
     color: palette.main,
-    backgroundColor: palette.white,
-    borderColor: palette.transparent,
+    backgroundColor: palette.transparent,
     [HOVER]: {
       backgroundColor: palette.mainLight,
     },
   },
   underline: {
-    color: palette.main,
-    backgroundColor: palette.white,
+    color: palette.black,
+    backgroundColor: palette.transparent,
     borderRadius: 0,
-    borderColor: palette.transparent,
+    borderWidth: 2,
     [HOVER]: {
       borderBottomColor: palette.main,
     },
   },
   icon: {
-    color: palette.main,
-    padding: 2,
-    backgroundColor: palette.white,
+    padding: 6,
+    backgroundColor: palette.transparent,
     borderColor: palette.transparent,
     [HOVER]: {
       backgroundColor: palette.mainLight,
     },
   },
+  clean: {},
 }
 
 export const size = {
