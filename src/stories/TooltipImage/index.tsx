@@ -1,7 +1,6 @@
 import React from 'react'
 import { withInfo } from '@storybook/addon-info'
 
-import { Box } from 'styles'
 import ImageTooltip from 'components/TooltipImage'
 
 export default {
@@ -12,8 +11,4 @@ export default {
   },
 }
 
-export const TooltipImage = () => (
-  <Box ml={40}>
-    <ImageTooltip title="Иван Иванов" src={require('../../assets/images/avatar.png')} />
-  </Box>
-)
+export const TooltipImage = () => <ImageTooltip title="Иван Иванов" src={require('../../assets/images/avatar.png')} />

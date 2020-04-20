@@ -29,7 +29,7 @@ type Props = {
   src: string
 }
 
-const TooltipImage: FC<Omit<TooltipProps, 'children'> & Props> = props => {
+const TooltipImage: FC<Props & Omit<TooltipProps, 'children'>> = props => {
   return (
     <CustomTooltip title={props.title} placement={props.placement} arrow={props.arrow} {...props}>
       <StyledImg width={32} height={32} borderRadius={5} src={props.src} />
