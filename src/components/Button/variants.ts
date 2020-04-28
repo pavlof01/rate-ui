@@ -25,6 +25,13 @@ export const buttons = {
       backgroundColor: palette.mainLight,
     },
   },
+  white: {
+    color: palette.main,
+    backgroundColor: palette.white,
+    [HOVER]: {
+      backgroundColor: palette.mainLight,
+    },
+  },
   underline: {
     color: palette.black,
     backgroundColor: palette.transparent,
@@ -35,9 +42,11 @@ export const buttons = {
     },
   },
   icon: {
-    padding: 6,
+    width: 40,
+    height: 40,
     backgroundColor: palette.transparent,
     borderColor: palette.transparent,
+    borderRadius: '50%',
     [HOVER]: {
       backgroundColor: palette.mainLight,
     },

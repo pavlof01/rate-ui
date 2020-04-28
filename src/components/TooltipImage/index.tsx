@@ -32,7 +32,7 @@ type Props = {
 const TooltipImage: FC<Props & Omit<TooltipProps, 'children'>> = props => {
   return (
     <CustomTooltip title={props.title} placement={props.placement} arrow={props.arrow} {...props}>
-      <StyledImg width={32} height={32} borderRadius={5} src={props.src} />
+      <StyledImg width={32} height={32} borderRadius={10} src={props.src} />
     </CustomTooltip>
   )
 }

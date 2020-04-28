@@ -2,5 +2,5 @@
 export const HOVER = '&:hover'
 export const FOCUS = '&:focus'
 export const ACTIVE = '&:active'
-export const FIRST = '&:first-child'
-export const LAST = '&:last-child'
+export const FIRST_CHILD = '&:first-child'
+export const LAST_CHILD = '&:last-child'

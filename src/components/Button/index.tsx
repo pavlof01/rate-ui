@@ -39,7 +39,7 @@ export interface IButtonProps
   size?: keyof typeof size | Array<keyof typeof size>
 }
 
-const Button = styled.button<IButtonProps>`
+export const Button = styled.button<IButtonProps>`
   white-space: nowrap;
   ${compose(typography, color, spacing, borders, sizing, palette, shadows, variant, sizeVariants)}
 `
@@ -53,9 +53,4 @@ Button.defaultProps = {
   py: 8,
 }
 
-/**
- * Можно добавить описание
- */
-export const ButtonComponent: FC<IButtonProps> = props => <Button {...props}>{props.children}</Button>
-
-export default ButtonComponent
+export default Button

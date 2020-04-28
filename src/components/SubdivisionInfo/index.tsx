@@ -5,7 +5,7 @@ import TooltipImage from 'components/TooltipImage'
 
 import { Flex, FlexFill, Text } from 'styles'
 import pallete from 'styles/palette'
-import { HOVER, LAST } from 'helpers/constant'
+import { HOVER, LAST_CHILD } from 'helpers/constant'
 
 const StyledFlexFill = styled(FlexFill)({
   alignItems: 'center',
@@ -17,7 +17,7 @@ const StyledFlexFill = styled(FlexFill)({
       display: 'flex',
     },
   },
-  [LAST]: {
+  [LAST_CHILD]: {
     borderBottomLeftRadius: 16,
     borderBottomRightRadius: 16,
   },

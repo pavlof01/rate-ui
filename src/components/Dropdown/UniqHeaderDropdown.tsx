@@ -4,7 +4,7 @@ import HoverMenu from 'material-ui-popup-state/HoverMenu'
 import { usePopupState, bindHover, bindMenu } from 'material-ui-popup-state/hooks'
 
 import { Link, Text, FlexColumn, Img } from 'styles'
-import { FIRST, LAST, HOVER } from 'helpers/constant'
+import { FIRST_CHILD, LAST_CHILD, HOVER } from 'helpers/constant'
 import colors from 'styles/palette'
 
 import ButtonWithIcon from '../ButtonWithIcon'
@@ -21,8 +21,8 @@ const StyledButtonWithIcon = styled(ButtonWithIcon)({
 })
 
 const StyledLink = styled(Link)({
-  [FIRST]: { paddingTop: 20 },
-  [LAST]: { paddingBottom: 20 },
+  [FIRST_CHILD]: { paddingTop: 20 },
+  [LAST_CHILD]: { paddingBottom: 20 },
   [HOVER]: { backgroundColor: colors.mainLight },
 })
 
@@ -54,7 +54,7 @@ export const UniqHeaderDropdown: FC<Props> = ({ title, menuItems }) => {
       >
         <FlexColumn>
           {menuItems.map(item => (
-            <StyledLink px={16} py={15} fontSize={1} alignItems="center" onClick={() => item.onClick()}>
+            <StyledLink key={item.text} px={16} py={15} fontSize={1} alignItems="center" onClick={() => item.onClick()}>
               {item.icon && <Img pr={16} src={item.icon} />}
               <Text>{item.text}</Text>
             </StyledLink>

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {
+  style,
   spacing,
   palette,
   color,
@@ -24,6 +25,12 @@ import {
   DisplayProps,
   PositionsProps,
 } from '@material-ui/system'
+
+export const opacity = style({
+  prop: 'opacity',
+  cssProperty: 'opacity',
+  transform: value => Number(value),
+})
 
 export const Text = styled.p<PaletteProps & SpacingProps & TypographyProps & FlexboxProps>(
   compose(color, palette, spacing, typography, flexbox)
@@ -78,8 +85,8 @@ export const Box = styled.div<
     PositionsProps &
     DisplayProps &
     SizingProps &
-    ShadowsProps
->(compose(palette, spacing, typography, flexbox, color, borders, positions, display, sizing, shadows))
+    ShadowsProps & { opacity?: number }
+>(compose(palette, spacing, typography, flexbox, color, borders, positions, display, sizing, shadows, opacity))
 
 Box.defaultProps = {}
 
@@ -96,5 +103,9 @@ export const FlexFullFill = styled(FlexFill)({ height: '100%' })
 export const FlexColumn = styled(Flex)({ flexDirection: 'column' })
 
 export const Img = styled.img<SpacingProps & FlexboxProps & SizingProps & BordersProps>(
+  compose(spacing, flexbox, sizing, borders)
+)
+
+export const List = styled.ul<SpacingProps & FlexboxProps & SizingProps & BordersProps>(
   compose(spacing, flexbox, sizing, borders)
 )

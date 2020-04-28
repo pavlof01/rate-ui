@@ -1,7 +1,7 @@
 import React from 'react'
 
 import HeaderMenu from './components/HeaderMenu'
-import SubdivisionInfo from './components/SubdivisionInfo'
+import TreeView from './components/TreeView'
 import { Box } from 'styles'
 
 const App = () => {
@@ -9,27 +9,8 @@ const App = () => {
     <Box>
       <HeaderMenu />
       <Box my={50} />
-      <Box borderRadius={16} boxShadow={10} m={24}>
-        <SubdivisionInfo
-          title="Управление информационных систем"
-          owner={{ name: 'Иванова Виктория', photo: 'URL' }}
-          numOfServices={7}
-        />
-        <SubdivisionInfo
-          title="Управление информационных систем"
-          owner={{ name: 'Иванова Виктория', photo: 'URL' }}
-          numOfServices={7}
-        />
-        <SubdivisionInfo
-          title="Управление информационных систем"
-          owner={{ name: 'Иванова Виктория', photo: 'URL' }}
-          numOfServices={7}
-        />
-        <SubdivisionInfo
-          title="Управление информационных систем"
-          owner={{ name: 'Иванова Виктория', photo: 'URL' }}
-          numOfServices={7}
-        />
+      <Box m={50} bgcolor="white" boxShadow={15} p={8} borderRadius={16}>
+        <TreeView />
       </Box>
     </Box>
   )
