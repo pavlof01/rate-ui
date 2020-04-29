@@ -25,6 +25,7 @@ import {
   DisplayProps,
   PositionsProps,
 } from '@material-ui/system'
+import { CursorProperty } from 'csstype'
 
 export const opacity = style({
   prop: 'opacity',
@@ -32,13 +33,18 @@ export const opacity = style({
   transform: value => Number(value),
 })
 
-export const Text = styled.p<PaletteProps & SpacingProps & TypographyProps & FlexboxProps>(
-  compose(color, palette, spacing, typography, flexbox)
+export const cursor = style({
+  prop: 'cursor',
+  cssProperty: 'cursor',
+  transform: value => `${value}`,
+})
+
+export const Text = styled.p<PaletteProps & SpacingProps & TypographyProps & FlexboxProps & PositionsProps>(
+  compose(color, palette, spacing, typography, flexbox, positions)
 )
 
 Text.defaultProps = {
   fontSize: 14,
-  color: 'black',
   fontFamily: 'Regular',
 }
 
@@ -64,7 +70,22 @@ TextInput.defaultProps = {
   fontFamily: 'Regular',
 }
 
-export const H1 = styled.h1<PaletteProps & SpacingProps & TypographyProps>(compose(color, palette, spacing, typography))
+export const TextArea = styled.textarea<
+  PaletteProps & SpacingProps & TypographyProps & FlexboxProps & BordersProps & SizingProps
+>(compose(color, palette, spacing, typography, flexbox, borders, sizing))
+
+TextArea.defaultProps = {
+  fontSize: 14,
+  width: '100%',
+  bgcolor: 'rgba(0,0,0,0)',
+  color: 'black',
+  fontFamily: 'Regular',
+  border: 'none',
+}
+
+export const H1 = styled.h1<PaletteProps & SpacingProps & TypographyProps & FlexboxProps & PositionsProps>(
+  compose(color, palette, spacing, typography, flexbox, positions)
+)
 
 H1.defaultProps = {
   fontSize: 32,
@@ -85,8 +106,8 @@ export const Box = styled.div<
     PositionsProps &
     DisplayProps &
     SizingProps &
-    ShadowsProps & { opacity?: number }
->(compose(palette, spacing, typography, flexbox, color, borders, positions, display, sizing, shadows, opacity))
+    ShadowsProps & { opacity?: number } & { cursor?: CursorProperty }
+>(compose(palette, spacing, typography, flexbox, color, borders, positions, display, sizing, shadows, opacity, cursor))
 
 Box.defaultProps = {}
 

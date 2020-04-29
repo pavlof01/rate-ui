@@ -1,21 +1,27 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
 import { buttons, size } from '../components/Button/variants'
+
+interface MyTheme {
+  fontSizes: number[]
+  buttons: typeof buttons
+  //TODO resolve error after uncomment type
+  // size: keyof typeof size | Array<keyof typeof size>
+  size: any
+  serviceRatingColors: string[]
+}
+
 // TODO transfer custome styles at index.d.ts
+// TODO create global one theme for material-ui and styled-components
+// TODO think about transfer *serviceRatingColors* to pelette or custom colors
 declare module '@material-ui/core/styles/createMuiTheme' {
-  interface Theme {
-    fontSizes: number[]
-    buttons: typeof buttons
-    size: keyof typeof size | Array<keyof typeof size>
-    serviceRatingColors: string[]
-  }
+  interface Theme extends MyTheme {}
   // * allow configuration using `createMuiTheme`
-  interface ThemeOptions {
-    fontSizes: number[]
-    buttons: typeof buttons
-    size: typeof size | Array<typeof size>
-    serviceRatingColors: string[]
-  }
+  interface ThemeOptions extends MyTheme {}
+}
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends MyTheme {}
 }
 
 const theme = createMuiTheme({
