@@ -1,26 +1,30 @@
 import React, { FC, useState } from 'react'
 import { times } from 'lodash'
-import { useTheme } from 'styled-components'
+import { useTheme } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Collapse from '@material-ui/core/Collapse'
+import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import Box from '@material-ui/core/Box'
+import Text from '@material-ui/core/Typography'
 
-import { Box, FlexFill, Flex, Text, TextArea } from 'styles'
-import { autoGrowTextArea } from 'utils'
+import { FlexFill, Flex } from 'styles'
 
-import Button from 'components/Button'
 import RateButton from 'components/RateButton'
+// import TextArea from 'components/TextArea'
 import { Star } from 'components/SvgIcons'
 
-const Label: FC<{ label: string; color?: string }> = ({ label, color }) => (
-  <Text fontSize={12} color={color}>
-    {label}
-  </Text>
-)
-
+// TODO change "ANY" type
+const Label: FC<{ label: string; color?: any }> = ({ label, color }) => <Typography color={color}>{label}</Typography>
 Label.defaultProps = {
-  color: 'text.secondary',
+  color: 'textSecondary',
 }
 
 const Section: FC<{ value: string; label: string }> = ({ label, value }) => (
-  <Box mb={16}>
+  <Box mb={2}>
     <Label label={label} />
     <Text>{value}</Text>
   </Box>
@@ -38,62 +42,78 @@ const ServiceRate = () => {
   const [errors, setErrors] = useState<typeof errorsInitState>({ noComment: false })
 
   const onSend = () => {
-    if (currentRate! < 7 && !comment.length) {
+    if (!isExpanded) return null
+    if (isNeedComment && !comment.length) {
       return setErrors({ noComment: true })
     }
     setErrors(errorsInitState)
   }
+
+  const isExpanded = true // currentRate !== undefined
+  const isNeedComment = currentRate && currentRate < 7
   return (
-    <Box width={560} boxShadow={5} p={24} borderRadius={16}>
-      <Section label="Тип" value="Вывод сотрудника" />
-      <Section label="Название" value="Вывод нового сотрудника — Web–разработчик JS/React (front end)" />
-      <Section label="Дата оказания" value="20.02.2020" />
-      <Text>Ваша оценка</Text>
-      <Flex justifyContent="space-between">
-        {times(10, i => (
-          <RateButton key={i} rate={i} currentRate={currentRate} setCurrentRate={setCurrentRate} />
-        ))}
-      </Flex>
-      <Flex justifyContent="space-between">
-        <Label label="плохо" />
-        <Label label="отлично" />
-      </Flex>
-      {currentRate && (
-        <Flex alignItems="center" justifyContent="center">
-          <Text position="absolute" color="white" fontSize={72}>
-            {currentRate}
-          </Text>
-          <Star fill={theme.serviceRatingColors[--currentRate]} />
-        </Flex>
-      )}
-      {currentRate !== undefined && currentRate < 7 && (
-        <Box px={16} py={12} mt={24} bgcolor={errors.noComment ? 'error.light' : 'primary.light'} borderRadius={12}>
-          <FlexFill flexDirection="column">
-            <FlexFill justifyContent="space-between">
-              <Text>Комментарий</Text>
-              <Label label="обязательно" color={errors.noComment ? 'error.main' : undefined} />
+    <Box>
+      <Card elevation={3}>
+        <CardContent>
+          <Section label="Тип" value="Вывод сотрудника" />
+          <Section label="Название" value="Вывод нового сотрудника — Web–разработчик JS/React (front end)" />
+          <Section label="Дата оказания" value="20.02.2020" />
+        </CardContent>
+
+        <CardContent>
+          <Text>Ваша оценка</Text>
+          <Flex justifyContent={'center'} flexWrap={'wrap'}>
+            <Flex justifyContent={'center'} flexDirection={'column'}>
+              <Flex>
+                {times(5, i => (
+                  <RateButton key={i + 1} rate={i + 1} currentRate={currentRate} setCurrentRate={setCurrentRate} />
+                ))}
+              </Flex>
+              <Label label="плохо" />
+            </Flex>
+            <Flex justifyContent={'center'} flexDirection={'column'} alignItems={'flex-end'}>
+              <Flex>
+                {times(5, i => (
+                  <RateButton key={i + 6} rate={i + 6} currentRate={currentRate} setCurrentRate={setCurrentRate} />
+                ))}
+              </Flex>
+              <Label label="отлично" />
+            </Flex>
+          </Flex>
+          {currentRate && (
+            <Flex alignItems="center" justifyContent="center">
+              <Text style={{ fontSize: 72 }} align="center">
+                {currentRate}
+              </Text>
+              <Star fill={theme.serviceRatingColors[currentRate]} />
+            </Flex>
+          )}
+        </CardContent>
+        <CardContent>
+          <Collapse in={isExpanded} timeout={0} unmountOnExit>
+            <Box px={2} py={1.5} mt={3} bgcolor={errors.noComment ? 'error.light' : 'primary.light'} borderRadius={12}>
+              <FlexFill flexDirection="column">
+                <TextField
+                  value={comment}
+                  label="Комментарий"
+                  variant="filled"
+                  placeholder="Введите текст"
+                  multiline
+                  error={errors.noComment}
+                  helperText="обязательно"
+                  onChange={e => setComment(e.currentTarget.value)}
+                  InputProps={{ disableUnderline: true }}
+                />
+              </FlexFill>
+            </Box>
+            <FlexFill justifyContent="flex-end" mt={2.5}>
+              <Button onClick={onSend} variant="contained" color="primary">
+                Отправить оценку
+              </Button>
             </FlexFill>
-            <TextArea
-              value={comment}
-              id="rate-comment"
-              mt={10}
-              maxHeight={250}
-              placeholder="Введите текст"
-              onInput={e => {
-                setComment(e.currentTarget.value)
-                autoGrowTextArea('rate-comment')
-              }}
-            />
-          </FlexFill>
-        </Box>
-      )}
-      {++currentRate! ? (
-        <FlexFill justifyContent="flex-end" mt={20}>
-          <Button height={48} onClick={onSend}>
-            Отправить оценку
-          </Button>
-        </FlexFill>
-      ) : null}
+          </Collapse>
+        </CardContent>
+      </Card>
     </Box>
   )
 }

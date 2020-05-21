@@ -1,17 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@material-ui/core/styles'
 import { fade, makeStyles, withStyles, Theme, createStyles } from '@material-ui/core/styles'
 import TreeView from '@material-ui/lab/TreeView'
 import TreeItem, { TreeItemProps } from '@material-ui/lab/TreeItem'
 import Collapse from '@material-ui/core/Collapse'
+import Box from '@material-ui/core/Box'
+import Text from '@material-ui/core/Typography'
 import { TransitionProps } from '@material-ui/core/transitions'
-import ButtonMUI from '@material-ui/core/ButtonBase'
+import Button from '@material-ui/core/Button'
 
-import { Img, Box, FlexFill, Flex, Text } from 'styles'
+import { FlexFill, Flex } from 'styles'
 import palette from 'styles/palette'
 import { HOVER } from 'helpers/constant'
 
-import Button from 'components/Button'
 import Dropdown from 'components/Dropdown'
 import List from 'components/List'
 import TooltipImage from 'components/TooltipImage'
@@ -19,11 +20,11 @@ import TooltipImage from 'components/TooltipImage'
 //TODO! NEED FULLL REFACTORING AND DECOMPOSITION BY COMPONENTS
 
 function MinusSquare() {
-  return <Img style={{ transform: 'rotateX(0.5turn)' }} src={require('../../assets/icons/arrow.svg')} />
+  return <img style={{ transform: 'rotateX(0.5turn)' }} src={require('../../assets/icons/arrow.svg')} />
 }
 
 function PlusSquare() {
-  return <Img src={require('../../assets/icons/arrow.svg')} />
+  return <img src={require('../../assets/icons/arrow.svg')} />
 }
 
 const useTreeItemStyles = makeStyles((theme: Theme) =>
@@ -73,7 +74,7 @@ const useTreeItemStyles = makeStyles((theme: Theme) =>
     labelIcon: {},
     labelText: {},
     labelInfo: {
-      color: palette.main,
+      color: palette.primary.main,
     },
   })
 )
@@ -114,9 +115,9 @@ function StyledTreeItem(props: StyledTreeItemProps) {
       label={
         <FlexFill className={classes.labelRoot}>
           <Text className={classes.labelText}>{labelText}</Text>
-          <Flex opacity={0} alignItems="center">
+          <Flex /* opacity={0} */ alignItems="center">
             <Text className={classes.labelInfo}>{labelInfo}</Text>
-            <Button variant="white" px={16} mx={15} onClick={onClick}>
+            <Button variant="contained" onClick={onClick}>
               Добавить сервис
             </Button>
           </Flex>
@@ -136,7 +137,7 @@ function StyledTreeItem(props: StyledTreeItemProps) {
   )
 }
 
-const ServiceTypeBox = styled.li({
+const ServiceTypeBox = styled('li')({
   paddingTop: 15,
   paddingBottom: 15,
   paddingRight: 30,
@@ -149,7 +150,7 @@ const ServiceTypeBox = styled.li({
       opacity: 1,
     },
     p: {
-      color: palette.main,
+      color: palette.primary.main,
     },
   },
 })
@@ -184,12 +185,12 @@ const TreeStruc = () => {
                 return (
                   <ServiceTypeBox key={service.id}>
                     <Flex alignItems="center">
-                      <Img px={10} src={getServiceIcon(service)} />
-                      <Text color={isActive ? palette.black : palette.blackAlt2} key={service.id}>
+                      <img src={getServiceIcon(service)} />
+                      {/* <Text color={isActive ? palette.black : palette.blackAlt2} key={service.id}>
                         {service.title}
-                      </Text>
+                      </Text> */}
                     </Flex>
-                    <Flex id="more-info" opacity={0} alignItems="center">
+                    <Flex id="more-info" /* opacity={0} */ alignItems="center">
                       {[department.primaryManager, ...department.secondaryManagers].map(manager => {
                         return (
                           <Box key={manager.uid} mr={8}>

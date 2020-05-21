@@ -1,29 +1,21 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import { styled } from '@material-ui/core/styles'
 import HoverMenu from 'material-ui-popup-state/HoverMenu'
 import { usePopupState, bindHover, bindMenu } from 'material-ui-popup-state/hooks'
+import Button from '@material-ui/core/Button'
+import Link from '@material-ui/core/Link'
+import Text from '@material-ui/core/Typography'
 
-import { Link, Text, FlexColumn, Img } from 'styles'
+import { FlexColumn } from 'styles'
 import { FIRST_CHILD, LAST_CHILD, HOVER } from 'helpers/constant'
-import colors from 'styles/palette'
-
-import ButtonWithIcon from '../ButtonWithIcon'
-
-const StyledButtonWithIcon = styled(ButtonWithIcon)({
-  borderRadius: 16,
-  [HOVER]: {
-    backgroundColor: colors.mainLight,
-    borderColor: colors.transparent,
-    '& .endIcon': {
-      transform: 'rotateX(0.5turn)',
-    },
-  },
-})
+import palette from 'styles/palette'
 
 const StyledLink = styled(Link)({
   [FIRST_CHILD]: { paddingTop: 20 },
   [LAST_CHILD]: { paddingBottom: 20 },
-  [HOVER]: { backgroundColor: colors.mainLight },
+  [HOVER]: { backgroundColor: palette.primary.light },
+  padding: 16,
+  fontSize: 1,
 })
 
 type Props = {
@@ -35,17 +27,16 @@ export const UniqHeaderDropdown: FC<Props> = ({ title, menuItems }) => {
   const DropDownMenuState = usePopupState({ variant: 'popper', popupId: 'demoMenu' })
   return (
     <>
-      <StyledButtonWithIcon
-        px={23}
-        variant="underline"
-        startIcon={require('../../assets/icons/raiting.svg')}
-        endIcon={require('../../assets/icons/arrow.svg')}
-        borderColor={colors.gray}
-        border="2px solid"
+      <Button
+        variant="text"
+        // startIcon={require('../../assets/icons/raiting.svg')}
+        // endIcon={require('../../assets/icons/arrow.svg')}
+        // borderColor={palette.primary.dark}
+        // border="2px solid"
         {...bindHover(DropDownMenuState)}
       >
         {title}
-      </StyledButtonWithIcon>
+      </Button>
       <HoverMenu
         {...bindMenu({ ...DropDownMenuState })}
         getContentAnchorEl={null}
@@ -54,8 +45,8 @@ export const UniqHeaderDropdown: FC<Props> = ({ title, menuItems }) => {
       >
         <FlexColumn>
           {menuItems.map(item => (
-            <StyledLink key={item.text} px={16} py={15} fontSize={1} alignItems="center" onClick={() => item.onClick()}>
-              {item.icon && <Img pr={16} src={item.icon} />}
+            <StyledLink key={item.text} onClick={() => item.onClick()}>
+              {item.icon && <img src={item.icon} />}
               <Text>{item.text}</Text>
             </StyledLink>
           ))}

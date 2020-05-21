@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import { styled } from '@material-ui/core/styles'
 
-const StyledFlexColumn = styled.ul({
+const StyledFlexColumn = styled('ul')({
   '& > li:first-of-type': {
     borderBottom: '1px solid #E9E9E9',
   },

@@ -401,7 +401,7 @@ button {
 }
 
 button:active {
-  transform: scale(0.95);
+  /* transform: scale(0.95); */
 }
 
 code {
@@ -416,4 +416,18 @@ code {
 
 .MuiPaper-rounded {
   border-radius: 16px !important;
+}
+
+/* TODO FIX THIS */
+/* *КОСТЫЛИ* */
+/* все должно по идеи меняться в createMuiTheme, но на момент разработки не особо получилось в короткий срок сделать */
+/* hide underline from text field */
+
+.MuiFilledInput-root.Mui-focused {
+  background-color: #ffffff !important;
+  border-color: #7953E4 !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #646668 !important;
 }

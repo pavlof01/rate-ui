@@ -1,18 +1,19 @@
 import { createMuiTheme } from '@material-ui/core/styles'
+import qwe from '@material-ui/core/styles'
 
-import { buttons, size } from '../components/Button/variants'
+import { BEFORE, AFTER, HOVER } from 'helpers/constant'
+import palette from './palette'
 
 interface MyTheme {
   fontSizes: number[]
-  buttons: typeof buttons
+  // buttons: typeof buttons
   //TODO resolve error after uncomment type
   // size: keyof typeof size | Array<keyof typeof size>
-  size: any
+  // size: any
   serviceRatingColors: string[]
 }
 
 // TODO transfer custome styles at index.d.ts
-// TODO create global one theme for material-ui and styled-components
 // TODO think about transfer *serviceRatingColors* to pelette or custom colors
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme extends MyTheme {}
@@ -20,43 +21,12 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   interface ThemeOptions extends MyTheme {}
 }
 
-declare module 'styled-components' {
-  export interface DefaultTheme extends MyTheme {}
-}
-
 const theme = createMuiTheme({
   fontSizes: [12, 14, 16, 18, 24, 32, 36, 72, 96],
-  spacing: 1,
-  buttons,
-  size,
-  palette: {
-    primary: {
-      main: '#7953E4',
-      light: '#F2EEFC',
-      dark: '#6440CA',
-      contrastText: '#532FB8',
-    },
-    success: {
-      main: '#57CF1F',
-    },
-    info: {
-      main: '#FFC875',
-    },
-    error: {
-      main: '#FF101F',
-      light: '#FFF0F0',
-    },
-    divider: '#D3D3D4',
-    background: {
-      default: '#E9E9E9',
-    },
-    text: {
-      primary: '#222527',
-      secondary: '#646668',
-      hint: '#F4F4F4',
-    },
-  },
+  // size,
+  palette,
   serviceRatingColors: [
+    '',
     '#FF101F',
     '#FF3B10',
     '#FF5810',
@@ -68,6 +38,73 @@ const theme = createMuiTheme({
     '#82CF1F',
     '#57CF1F',
   ],
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 12,
+        fontSize: 14,
+        textTransform: 'none',
+        fontWeight: 'normal',
+      },
+      containedPrimary: {
+        backgroundColor: palette.primary.main,
+        color: '#fff',
+        borderRadius: 12,
+      },
+    },
+    MuiInputBase: {
+      error: {
+        backgroundColor: palette.error.light,
+      },
+    },
+    MuiInputLabel: {
+      formControl: {
+        color: palette.text.primary,
+      },
+    },
+    MuiFormLabel: {
+      root: {
+        '&.Mui-error': {
+          color: palette.text.primary,
+        },
+      },
+    },
+    MuiFilledInput: {
+      root: {
+        backgroundColor: palette.primary.light,
+        border: '2px solid rgba(0,0,0,0)',
+        borderRadius: 16,
+        borderTopLeftRadius: 16,
+        borderTopRightRadius: 16,
+        [HOVER]: {
+          backgroundColor: '#fff',
+          borderColor: palette.primary.main,
+        },
+        '&.Mui-error': {
+          backgroundColor: palette.error.light,
+        },
+        '&.Mui-error:hover': {
+          backgroundColor: '#fff',
+          borderColor: palette.error.main,
+        },
+      },
+    },
+    MuiTypography: {
+      root: {
+        fontSize: 14,
+        color: palette.text.primary,
+      },
+      colorTextSecondary: {
+        fontSize: 12,
+      },
+    },
+    MuiCardContent: {
+      root: {
+        paddingLeft: 24,
+        paddingRight: 24,
+      },
+    },
+  },
 })
 
 export default theme

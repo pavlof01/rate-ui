@@ -1,20 +1,24 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import { styled } from '@material-ui/core/styles'
 import HoverMenu from 'material-ui-popup-state/HoverMenu'
 import Menu from '@material-ui/core/Menu'
+import Link from '@material-ui/core/Link'
+
 import { PopoverOrigin } from '@material-ui/core/Popover'
+import Button from '@material-ui/core/Button'
+import Text from '@material-ui/core/Typography'
 import { usePopupState, bindHover, bindMenu, bindTrigger } from 'material-ui-popup-state/hooks'
 
-import { Link, Text, FlexColumn, Img } from 'styles'
+import { FlexColumn } from 'styles'
 import { FIRST_CHILD, LAST_CHILD, HOVER } from 'helpers/constant'
-import colors from 'styles/palette'
-
-import Button from '../Button'
+import palette from 'styles/palette'
 
 const StyledLink = styled(Link)({
   [FIRST_CHILD]: { paddingTop: 20 },
   [LAST_CHILD]: { paddingBottom: 20 },
-  [HOVER]: { backgroundColor: colors.mainLight },
+  [HOVER]: { backgroundColor: palette.primary.light },
+  padding: 16,
+  fontSize: 1,
 })
 
 type Props = {
@@ -29,8 +33,8 @@ export const DropDownMenu: FC<Props> = ({ title, menuItems, icon, anchorOrigin, 
   const DropDownMenuState = usePopupState({ variant: 'popper', popupId: 'demoMenu' })
   return (
     <>
-      <Button px={0} py={0} variant={icon ? 'icon' : 'underline'} {...bindHover(DropDownMenuState)}>
-        {icon ? <Img src={icon && require('../../assets/icons/dots.svg')} /> : title}
+      <Button /* variant={icon ? 'icon' : 'underline'} */ {...bindHover(DropDownMenuState)}>
+        {icon ? <img src={icon && require('../../assets/icons/dots.svg')} /> : title}
       </Button>
       <HoverMenu
         {...bindMenu({ ...DropDownMenuState })}
@@ -40,8 +44,8 @@ export const DropDownMenu: FC<Props> = ({ title, menuItems, icon, anchorOrigin, 
       >
         <FlexColumn>
           {menuItems.map(item => (
-            <StyledLink key={item.text} px={16} py={15} fontSize={1} alignItems="center" onClick={() => item.onClick()}>
-              {item.icon && <Img pr={16} src={item.icon} />}
+            <StyledLink key={item.text} onClick={() => item.onClick()}>
+              {item.icon && <img src={item.icon} />}
               <Text>{item.text}</Text>
             </StyledLink>
           ))}

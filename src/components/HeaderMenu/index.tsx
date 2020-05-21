@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
+import Button from '@material-ui/core/Button'
+import Text from '@material-ui/core/Typography'
 
-import { Flex, FlexFill, Text, Img } from 'styles'
+import { Flex, FlexFill } from 'styles'
 
-import Button from 'components/Button'
-import ButtonWithIcon from 'components/ButtonWithIcon'
 import Dropdown from 'components/Dropdown'
 import UniqHeaderDropdown from 'components/Dropdown/UniqHeaderDropdown'
 
@@ -105,14 +105,14 @@ const HeaderMenu: FC<Props> = () => {
         </Flex>
       </FlexFill>
       <FlexFill flex={1} justifyContent="space-around" alignItems="center" pr={24}>
-        <Button variant="icon">
-          <Img src={require('../../assets/icons/notification.svg')} />
+        <Button variant="contained">
+          <img src={require('../../assets/icons/notification.svg')} />
         </Button>
-        <Img maxHeight={48} maxWidth={48} borderRadius={10} src={require('../../assets/images/avatar.png')} />
+        <img /* maxHeight={48} maxWidth={48} borderRadius={10} */ src={require('../../assets/images/avatar.png')} />
         <Text>Татьяна</Text>
-        <ButtonWithIcon variant="text" px={8} endIcon={require('../../assets/icons/exit.svg')}>
+        {/* <ButtonWithIcon variant="text" px={8} endIcon={require('../../assets/icons/exit.svg')}>
           Выйти
-        </ButtonWithIcon>
+        </ButtonWithIcon> */}
       </FlexFill>
     </FlexFill>
   )

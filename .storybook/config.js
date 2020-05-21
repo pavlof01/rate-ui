@@ -1,6 +1,6 @@
 import React from 'react'
 import { configure } from '@storybook/react'
-import { ThemeProvider } from 'styled-components'
+import { MuiThemeProvider } from '@material-ui/core/styles'
 import { addDecorator } from '@storybook/react'
 
 import Theme from '../src/styles/theme'
@@ -8,5 +8,5 @@ import Theme from '../src/styles/theme'
 import '../src/styles/global.css'
 import '../src/stories/styles.css'
 
-addDecorator(story => <ThemeProvider theme={Theme}>{story()}</ThemeProvider>)
+addDecorator(story => <MuiThemeProvider theme={Theme}>{story()}</MuiThemeProvider>)
 configure(require.context('../src/stories', true, /.tsx$/), module)

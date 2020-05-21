@@ -1,14 +1,27 @@
 export default {
-  main: '#7953E4',
-  mainLight: '#F2EEFC',
-  secondary: '#161B22',
-  black: '#222527',
-  blackAlt1: 'rgba(34, 37, 39, 0.8);',
-  blackAlt2: '#646668',
-  white: '#ffffff',
-  gray: '#E9E9E9',
-  grayAlt1: '#858D9F',
-  grayAlt2: '#626467',
-  grayAlt3: '#696D76',
-  transparent: 'rgba(0,0,0,0)',
+  primary: {
+    main: '#7953E4',
+    light: '#F2EEFC',
+    dark: '#6440CA',
+    contrastText: '#532FB8',
+  },
+  success: {
+    main: '#57CF1F',
+  },
+  info: {
+    main: '#FFC875',
+  },
+  error: {
+    main: '#FF101F',
+    light: '#FFF0F0',
+  },
+  divider: '#D3D3D4',
+  background: {
+    default: '#E9E9E9',
+  },
+  text: {
+    primary: '#222527',
+    secondary: '#646668',
+    hint: '#F4F4F4',
+  },
 }

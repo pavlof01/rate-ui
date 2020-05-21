@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import { styled } from '@material-ui/core/styles'
+import Text from '@material-ui/core/Typography'
 
 import TooltipImage from 'components/TooltipImage'
 
-import { Flex, FlexFill, Text } from 'styles'
+import { Flex, FlexFill } from 'styles'
 import pallete from 'styles/palette'
 import { HOVER, LAST_CHILD } from 'helpers/constant'
 
@@ -12,7 +13,7 @@ const StyledFlexFill = styled(FlexFill)({
   justifyContent: 'space-between',
   cursor: 'pointer',
   [HOVER]: {
-    backgroundColor: pallete.mainLight,
+    backgroundColor: pallete.primary.light,
     '& .more-info': {
       display: 'flex',
     },
@@ -31,13 +32,14 @@ type Props = {
 
 const SubdivisionInfo: FC<Props> = ({ title, owner, numOfServices }) => {
   return (
-    <StyledFlexFill height={48}>
-      <Text pl={16}>{title}</Text>
-      <Flex display="none" className="more-info" alignItems="center" pr={16}>
-        <Text mr={32}>сервисов: {numOfServices}</Text>
-        <TooltipImage title={owner.name} src={require('../../assets/images/avatar.png')} />
-      </Flex>
-    </StyledFlexFill>
+    <p>SubdivisionInfo</p>
+    //  <StyledFlexFill height={48}>
+    //    <Text pl={16}>{title}</Text>
+    //   <Flex display="none" className="more-info" alignItems="center" pr={16}>
+    //     <Text mr={32}>сервисов: {numOfServices}</Text>
+    //     <TooltipImage title={owner.name} src={require('../../assets/images/avatar.png')} />
+    //   </Flex>
+    //  </StyledFlexFill>
   )
 }
 
