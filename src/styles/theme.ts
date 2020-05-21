@@ -51,10 +51,34 @@ const theme = createMuiTheme({
         color: '#fff',
         borderRadius: 12,
       },
+      disableElevation: {
+        backgroundColor: '#fff',
+        color: palette.text.secondary,
+        padding: '6px 14px',
+        border: '2px solid rgba(0,0,0,0)',
+        [HOVER]: {
+          borderColor: palette.primary.main,
+          backgroundColor: '#fff',
+        },
+      },
     },
     MuiInputBase: {
-      error: {
-        backgroundColor: palette.error.light,
+      root: {
+        backgroundColor: palette.primary.light,
+        border: '2px solid rgba(0,0,0,0)',
+        borderRadius: 16,
+        borderTopLeftRadius: 16,
+        borderTopRightRadius: 16,
+        fontSize: 14,
+        padding: '2px 8px',
+        [HOVER]: {
+          backgroundColor: '#fff',
+          borderColor: palette.primary.main,
+        },
+        '&$focused': {
+          backgroundColor: '#fff',
+          borderColor: palette.primary.main,
+        },
       },
     },
     MuiInputLabel: {
@@ -90,7 +114,7 @@ const theme = createMuiTheme({
       },
     },
     MuiTypography: {
-      root: {
+      body1: {
         fontSize: 14,
         color: palette.text.primary,
       },
