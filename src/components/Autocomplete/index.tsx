@@ -138,7 +138,7 @@ const AutoComplete: React.FC<Props> = ({ title }) => {
           value={value}
           onChange={(event: any, newValue: any) => setValue(newValue)}
           disablePortal
-          noOptionsText={NoOptionsText}
+          noOptionsText={NoOptionsText()}
           renderOption={RenderOption}
           getOptionLabel={option => option.name}
           renderInput={RenderInput}
