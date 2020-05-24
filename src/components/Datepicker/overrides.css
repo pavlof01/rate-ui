@@ -1,0 +1,97 @@
+ /* NOTE: the order of these styles DO matter */
+ /* TODO NEED set up global css varibles of palette */
+
+ .DateRangePickerInput {
+   padding: 4px 16px;
+   display: flex;
+   align-items: center;
+   padding-right: 4px;
+ }
+
+ .DateInput {
+   width: 85px;
+ }
+
+ .DateInput_input {
+   font-size: 14px;
+   color: #222527;
+   padding: 0px;
+   width: 85px;
+   line-height: 18px;
+ }
+
+ .DateRangePickerInput__withBorder {
+   border-radius: 12px;
+   border: 2px solid #A187EC;
+ }
+
+ .DateInput_input__focused {
+   border-bottom: 2px solid #A187EC;
+ }
+
+ .DateRangePickerInput_calendarIcon {
+   padding: 0px;
+   margin: 0;
+   margin-right: 6px;
+ }
+
+ .DateRangePickerInput_calendarIcon_svg {
+   vertical-align: baseline;
+ }
+
+ /* Will edit everything selected including everything between a range of dates */
+ .CalendarDay__selected_span {
+   background: #E4DDFA !important;
+   color: #222527;
+   border: 1px solid #D3D3D4;
+ }
+
+ /* Will edit selected date or the endpoints of a range of dates */
+ .CalendarDay__selected {
+   background: #7953E4 !important;
+   color: white;
+   border: none;
+ }
+
+ /* Will edit when hovered over. _span style also has this property */
+ .CalendarDay__selected:hover {
+   background: #F06E52;
+   color: white;
+   border: none;
+ }
+
+ .CalendarDay__selected_span:active,
+ .CalendarDay__selected_span:hover {
+   color: inherit;
+   background: #E4DDFA !important;
+   border: 1px solid #D3D3D4;
+ }
+
+ /* Will edit when the second date (end date) in a range of dates */
+ /* is not yet selected. Edits the dates between your mouse and said date */
+ .CalendarDay__hovered_span:hover,
+ .CalendarDay__hovered_span {
+   background: #F2EEFC;
+   border: 1px solid #D3D3D4;
+   color: #222527;
+ }
+
+ .CalendarDay__highlighted_calendar {
+   color: #F06E52;
+ }
+
+ ::placeholder {
+   /* Chrome, Firefox, Opera, Safari 10.1+ */
+   color: #D3D3D4;
+   opacity: 1;
+   font-size: 12px;
+   /* Firefox */
+ }
+
+ .customArrowIcon {
+   background: #646668;
+   border-radius: 1px;
+   width: 12px;
+   height: 2px;
+   margin-right: 8px;
+ }
